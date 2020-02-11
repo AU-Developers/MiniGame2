@@ -3,28 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace LostChicks
+namespace Chickens
 {
     public class Model
-    {  
-        private int _points;
+    {
+        public int _points;
 
         //[Tooltip("Time limit of the game")]
-        float _timer = 120f; 
+        public float _timer = 120f;
         //[Tooltip("Timer for every interval")]
-        float _timePerInterval; 
+        public float _timePerInterval;
         //[Tooltip("Mimimum # of object in a row")]
-        public int _minObj = 1; 
+        public int _minObj = 1;
         //[Tooltip("Maximum # of object in a row")]
-        public int _maxObj = 3;  
+        public int _maxObj = 3;
         //[Tooltip("Minimum # of spacing per x number of seconds")]
-        public int _minInterval = 1; 
+        public int _minInterval = 1;
         //[Tooltip("Minimum # of spacing per x number of seconds")]
         public int _maxInterval = 2;
 
 
 
-        public int Points 
+        /*public int Points
         {
             get { return _points; }
             set { _points = value; }
@@ -33,7 +33,7 @@ namespace LostChicks
         public void RandomFallingObj()
         {
             int _randomNumInRow = Random.Range(_minObj, _maxObj + 1); //the random amount of objects in a row
-            int _randomInterval = Random.Range(_minInterval,_maxInterval + 1); //the random amount of intervals per x amount of timne    
+            int _randomInterval = Random.Range(_minInterval, _maxInterval + 1); //the random amount of intervals per x amount of timne    
         }
         /*private void Update()
         {
@@ -46,5 +46,4 @@ namespace LostChicks
         }*/
 
     }
-    
 }

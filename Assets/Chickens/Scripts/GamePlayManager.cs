@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace LostChicks 
+namespace Chickens 
 {
     public class GamePlayManager : MonoBehaviour
     {

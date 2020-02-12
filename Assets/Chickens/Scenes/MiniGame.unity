@@ -519,8 +519,9 @@ GameObject:
   - component: {fileID: 1706884863}
   - component: {fileID: 1706884865}
   - component: {fileID: 1706884864}
+  - component: {fileID: 1706884866}
   m_Layer: 0
-  m_Name: Panel
+  m_Name: ScoreView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -584,6 +585,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1706884862}
   m_CullTransparentMesh: 0
+--- !u!114 &1706884866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706884862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d422efd7d9b6907409e4adeb38522d8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _score: {fileID: 1791095778}
+  _timeLimit: {fileID: 149536647}
 --- !u!1 &1783256713
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,6 +696,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _chicken: {fileID: 3885357520828167164, guid: d20e92712af177e4ba83454876d22ac8,
     type: 3}
+  _hazard: {fileID: 4914841259150703391, guid: b8369781cb4a3a34081646aa0bcb472f, type: 3}
 --- !u!4 &1785891898
 Transform:
   m_ObjectHideFlags: 0

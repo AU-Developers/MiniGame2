@@ -4,21 +4,25 @@ using UnityEngine;
 
 public class Chicken : MonoBehaviour
 {
+    float timer;
+
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(TimerToDisable());
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    IEnumerator TimerToDisable()
-    {
-        yield return new WaitForSeconds(3f);
-        gameObject.SetActive(false);
+        if (gameObject.activeSelf)
+        {
+            timer += Time.deltaTime;
+            if (timer >= 2.5f)
+            {
+                gameObject.SetActive(false);
+                timer = 0;
+            }
+        }
     }
 }

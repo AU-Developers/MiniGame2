@@ -35,6 +35,11 @@ namespace Chickens
             {
                 collision.gameObject.SetActive(false);
             }
+
+            if (collision.gameObject.tag == "Hazard")
+            {
+                collision.gameObject.SetActive(false);
+            }
         }
     }
 }

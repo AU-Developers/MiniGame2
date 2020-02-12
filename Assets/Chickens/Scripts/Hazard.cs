@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIView : MonoBehaviour
+public class Hazard : MonoBehaviour
 {
-
     // Start is called before the first frame update
     void Start()
     {

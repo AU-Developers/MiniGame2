@@ -9,8 +9,10 @@ namespace Chickens
         Model model;
 
         [SerializeField] GameObject _chicken;
+        [SerializeField] GameObject _hazard;
 
-        List<GameObject> pooledObjects = new List<GameObject>();
+        List<GameObject> chickenPooledObjects = new List<GameObject>();
+        List<GameObject> hazardPooledObjects = new List<GameObject>();
 
         /// <summary>
         /// x value of chicken's position
@@ -26,7 +28,8 @@ namespace Chickens
         void Start()
         {
             //print(model._maxInterval);
-            DefaultChicken();
+            AddObject(chickenPooledObjects, _chicken);
+            AddObject(hazardPooledObjects, _hazard);
             StartCoroutine(Play());
         }
 
@@ -44,15 +47,33 @@ namespace Chickens
         {
             while (true)
             {
-                GameObject chick = ChickenPooling();
-                Vector2 pos = new Vector2(Random.Range(-widthPosition,widthPosition),heightPosition);
-                //int interval = Random.Range(model._minInterval, model._maxInterval + 1);
+                int objectsToDropAtTheSameTime = Random.Range(1,4);
 
-                if (chick == null)
-                    chick = AddChicken();
-                chick.transform.position = pos;
-                chick.SetActive(true);
+                for (int x = 0; x < objectsToDropAtTheSameTime; x++)
+                {
+                    GameObject obj = null;
+                    Vector2 pos = pos = new Vector2(Random.Range(-widthPosition, widthPosition), heightPosition);
 
+                    if (Random.value < 0.2f)
+                    {
+                        obj = ObjectPooling(hazardPooledObjects);
+                        //int interval = Random.Range(model._minInterval, model._maxInterval + 1);
+
+                        if (obj == null)
+                            obj = AddObject(hazardPooledObjects, _hazard);
+                    }
+                    else
+                    {
+                        obj = ObjectPooling(chickenPooledObjects);
+                        //int interval = Random.Range(model._minInterval, model._maxInterval + 1);
+
+                        if (obj == null)
+                            obj = AddObject(chickenPooledObjects, _chicken);
+                    }
+
+                    obj.transform.position = pos;
+                    obj.SetActive(true);
+                }
                 
                 //print(interval);
                 yield return new WaitForSeconds(2f);
@@ -61,41 +82,28 @@ namespace Chickens
 
 
         /// <summary>
-        /// Adding of chicken in pool
+        /// Adding of chicken/hazard in hierarchy and pooledObjects
         /// </summary>
-        GameObject AddChicken()
+        GameObject AddObject(List<GameObject> objectsToPool, GameObject toInstantiate)
         {
-            GameObject obj = Instantiate(_chicken);
+            GameObject obj = Instantiate(toInstantiate);
             obj.SetActive(false);
-            pooledObjects.Add(obj);
+            objectsToPool.Add(obj);
             return obj;
         }
 
         /// <summary>
-        /// Reusing chickens that is disabled
+        /// Reusing chickens/hazard that is disabled
         /// </summary>
-        GameObject ChickenPooling()
+        GameObject ObjectPooling(List<GameObject> objectsToPool)
         {
-            foreach (GameObject chicken in pooledObjects)
+            foreach (GameObject obj in objectsToPool)
             {
-                if (!chicken.activeInHierarchy)
-                    return chicken;
+                if (!obj.activeInHierarchy)
+                    return obj;
             }
 
             return null;
-        }
-
-        /// <summary>
-        /// default value of chicken in hierarchy
-        /// </summary>
-        void DefaultChicken()
-        {
-            for (int x = 0; x < 5; x++)
-            {
-                GameObject obj = Instantiate(_chicken);
-                obj.SetActive(false);
-                pooledObjects.Add(obj);
-            }
         }
     }
 }

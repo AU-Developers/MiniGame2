@@ -23,9 +23,9 @@ namespace Chickens
 
         void Controller()
         {
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x < -6.5f)
                 transform.Translate(Vector2.left * Time.deltaTime * speed);
-            else if (Input.GetKey(KeyCode.RightArrow))
+            else if (Input.GetKey(KeyCode.RightArrow) && transform.position.x < 6.5f)
                 transform.Translate(Vector2.right * Time.deltaTime * speed);
         }
 

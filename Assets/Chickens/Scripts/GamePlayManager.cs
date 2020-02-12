@@ -36,7 +36,7 @@ namespace Chickens
         /// <summary>
         /// x value of chicken's position
         /// </summary>    
-        float widthPosition = 8.5f;
+        float widthPosition = 7f;
 
         /// <summary>
         /// y value of chicken's position
@@ -64,36 +64,37 @@ namespace Chickens
         /// <returns></returns>
         IEnumerator Play()
         {
+            yield return new WaitUntil( ()=> _gameStart);
+
             while (true)
             {
-                if (GamePlayManager.Instance._gameStart)
+                int objectsToDropAtTheSameTime = Random.Range(_model._minObj, _model._maxObj);
+                
+                for (int x = 0; x < objectsToDropAtTheSameTime; x++)
                 {
-                    int objectsToDropAtTheSameTime = Random.Range(_model._minObj, _model._maxObj);
+                    GameObject obj = null;
+                    Vector2 pos = pos = new Vector2(Random.Range(-widthPosition, widthPosition), heightPosition);
                     int interval = Random.Range(_model._minInterval, _model._maxInterval + 1);
 
-                    for (int x = 0; x < objectsToDropAtTheSameTime; x++)
+                    if (Random.value < 0.2f)
                     {
-                        GameObject obj = null;
-                        Vector2 pos = pos = new Vector2(Random.Range(-widthPosition, widthPosition), heightPosition);
+                        obj = ObjectPooling(hazardPooledObjects);
 
-                        if (Random.value < 0.2f)
-                        {
-                            obj = ObjectPooling(hazardPooledObjects);
-
-                            if (obj == null)
-                                obj = AddObject(hazardPooledObjects, _hazard);
-                        }
-                        else
-                        {
-                            obj = ObjectPooling(chickenPooledObjects);
-
-                            if (obj == null)
-                                obj = AddObject(chickenPooledObjects, _chicken);
-                        }
-
-                        obj.transform.position = pos;
-                        obj.SetActive(true);
+                        if (obj == null)
+                            obj = AddObject(hazardPooledObjects, _hazard);
                     }
+                    else
+                    {
+                        obj = ObjectPooling(chickenPooledObjects);
+
+                        if (obj == null)
+                            obj = AddObject(chickenPooledObjects, _chicken);
+                    }
+
+                    
+
+                    obj.transform.position = pos;
+                    obj.SetActive(true);
 
                     yield return new WaitForSeconds(interval);
                 }

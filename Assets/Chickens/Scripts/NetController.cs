@@ -35,12 +35,15 @@ namespace Chickens
             {
                 collision.gameObject.SetActive(false);
                 collision.gameObject.GetComponent<Chicken>().timer = 0;
+                GamePlayManager.Instance._Model._points++;
             }
 
             if (collision.gameObject.tag == "Hazard")
             {
                 collision.gameObject.SetActive(false);
                 collision.gameObject.GetComponent<Chicken>().timer = 0;
+                if(GamePlayManager.Instance._Model._points > 0)
+                    GamePlayManager.Instance._Model._points--;
             }
         }
     }

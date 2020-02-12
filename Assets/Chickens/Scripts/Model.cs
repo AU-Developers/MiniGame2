@@ -23,8 +23,5 @@ namespace Chickens
         [Tooltip("Minimum # of spacing per x number of seconds")]
         public int _maxInterval = 2;
 
-
-
-  
     }
 }

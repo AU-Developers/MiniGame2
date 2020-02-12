@@ -20,12 +20,12 @@ namespace Chickens
         /// <summary>
         /// y value of chicken's position
         /// </summary>
-        float heightPosition = 5f;
+        float heightPosition = 5.5f;
 
         // Start is called before the first frame update
         void Start()
         {
-            print(model._maxInterval);
+            //print(model._maxInterval);
             DefaultChicken();
             StartCoroutine(Play());
         }
@@ -46,7 +46,7 @@ namespace Chickens
             {
                 GameObject chick = ChickenPooling();
                 Vector2 pos = new Vector2(Random.Range(-widthPosition,widthPosition),heightPosition);
-                int interval = Random.Range(model._minInterval, model._maxInterval + 1);
+                //int interval = Random.Range(model._minInterval, model._maxInterval + 1);
 
                 if (chick == null)
                     chick = AddChicken();
@@ -54,8 +54,8 @@ namespace Chickens
                 chick.SetActive(true);
 
                 
-                print(interval);
-                yield return new WaitForSeconds(interval);
+                //print(interval);
+                yield return new WaitForSeconds(2f);
             }
         }
 

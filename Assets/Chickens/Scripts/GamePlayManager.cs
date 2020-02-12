@@ -66,7 +66,7 @@ namespace Chickens
         {
             yield return new WaitUntil( ()=> _gameStart);
 
-            while (true)
+            while (_gameStart)
             {
                 int objectsToDropAtTheSameTime = Random.Range(_model._minObj, _model._maxObj);
                 
@@ -90,8 +90,6 @@ namespace Chickens
                         if (obj == null)
                             obj = AddObject(chickenPooledObjects, _chicken);
                     }
-
-                    
 
                     obj.transform.position = pos;
                     obj.SetActive(true);

@@ -22,18 +22,27 @@ namespace Chickens
         // Update is called once per frame
         void Update()
         {
-            
-            if (GamePlayManager.Instance._Model._timer % 60 >= 10)
+            if (GamePlayManager.Instance._Model._timer / 60 >= 1)
             {
-                _timeLimit.text = (int)(GamePlayManager.Instance._Model._timer / 60) + ":" + (int)(GamePlayManager.Instance._Model._timer % 60);
+                if (GamePlayManager.Instance._Model._timer % 60 >= 10)
+                    _timeLimit.text = (int)(GamePlayManager.Instance._Model._timer / 60) + ":" + (int)(GamePlayManager.Instance._Model._timer % 60);
+                else
+                    _timeLimit.text = (int)(GamePlayManager.Instance._Model._timer / 60) + ":0" + (int)(GamePlayManager.Instance._Model._timer % 60);
             }
             else
             {
-                _timeLimit.text = (int)(GamePlayManager.Instance._Model._timer / 60) + ":0" + (int)(GamePlayManager.Instance._Model._timer % 60);
+                if (GamePlayManager.Instance._Model._timer % 60 >= 10)
+                    _timeLimit.text = ":" + (int)(GamePlayManager.Instance._Model._timer % 60);
+                else
+                    _timeLimit.text = ":0" + (int)(GamePlayManager.Instance._Model._timer % 60);
             }
+            
 
             if(GamePlayManager.Instance._gameStart)
                 GamePlayManager.Instance._Model._timer -= Time.deltaTime;
+
+            if (GamePlayManager.Instance._Model._timer <= 0)
+                GamePlayManager.Instance._gameStart = false;
 
             _score.text = "Score: "+GamePlayManager.Instance._Model._points;
         }

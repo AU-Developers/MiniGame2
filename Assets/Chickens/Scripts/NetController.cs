@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 
 namespace Chickens
 {
-    public class NetController : MonoBehaviour
+    public class NetController : MonoBehaviour, IPointerClickHandler
     {
         public float speed;
 
@@ -13,6 +14,12 @@ namespace Chickens
         void Start()
         {
 
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            print(eventData.pointerCurrentRaycast.gameObject);
+            
         }
 
         // Update is called once per frame

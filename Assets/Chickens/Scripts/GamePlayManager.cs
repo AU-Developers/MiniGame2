@@ -6,13 +6,27 @@ namespace Chickens
 {
     public class GamePlayManager : MonoBehaviour
     {
-        Model model;
+        [SerializeField] Model _model;
+
+        public Model _Model { get { return _model; } }
 
         [SerializeField] GameObject _chicken;
         [SerializeField] GameObject _hazard;
 
         List<GameObject> chickenPooledObjects = new List<GameObject>();
         List<GameObject> hazardPooledObjects = new List<GameObject>();
+
+        private static GamePlayManager _instance;
+        public static GamePlayManager Instance
+        {
+            get
+            {
+                if (_instance == null)
+                    _instance = FindObjectOfType<GamePlayManager>();
+
+                return _instance;
+            }
+        }
 
         /// <summary>
         /// x value of chicken's position
@@ -36,7 +50,7 @@ namespace Chickens
         // Update is called once per frame
         void Update()
         {
-
+            
         }
 
         /// <summary>
@@ -47,7 +61,7 @@ namespace Chickens
         {
             while (true)
             {
-                int objectsToDropAtTheSameTime = Random.Range(1,4);
+                int objectsToDropAtTheSameTime = Random.Range(_model._minObj, _model._maxObj);
 
                 for (int x = 0; x < objectsToDropAtTheSameTime; x++)
                 {

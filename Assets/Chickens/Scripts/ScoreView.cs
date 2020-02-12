@@ -18,7 +18,7 @@ namespace Chickens
         // Update is called once per frame
         void Update()
         {
-
+            //_timeLimit.text = GamePlayManager.Instance._Model._timer ;
         }
     }
 }

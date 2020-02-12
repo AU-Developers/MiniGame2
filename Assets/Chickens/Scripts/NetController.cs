@@ -34,11 +34,13 @@ namespace Chickens
             if (collision.gameObject.tag == "Chicken")
             {
                 collision.gameObject.SetActive(false);
+                collision.gameObject.GetComponent<Chicken>().timer = 0;
             }
 
             if (collision.gameObject.tag == "Hazard")
             {
                 collision.gameObject.SetActive(false);
+                collision.gameObject.GetComponent<Chicken>().timer = 0;
             }
         }
     }

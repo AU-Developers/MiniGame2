@@ -457,7 +457,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -545,8 +545,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 264.8}
-  m_SizeDelta: {x: 0, y: -529.6}
+  m_AnchoredPosition: {x: 0, y: 187.4}
+  m_SizeDelta: {x: 0, y: -528.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1706884864
 MonoBehaviour:
@@ -694,6 +694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e4060f8d076fc46b448c739a927ec9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _model: {fileID: 11400000, guid: 71dd326318ee0c4449b41980b9b18263, type: 2}
   _chicken: {fileID: 3885357520828167164, guid: d20e92712af177e4ba83454876d22ac8,
     type: 3}
   _hazard: {fileID: 4914841259150703391, guid: b8369781cb4a3a34081646aa0bcb472f, type: 3}
@@ -746,7 +747,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -393.2, y: 0}
+  m_AnchoredPosition: {x: -320.00003, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1791095777
